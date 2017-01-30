@@ -40,24 +40,28 @@ $(document).ready(function() {
           url = '#';
         }
 
+//show all channels
+
+
         $(".streaming").append(
           "<div class='row "+ userData.status + "' id='" + user +"'>"+
-          "<div class='col-m-6'><img class='img-custom' " + "src='" + userData.logo +"'></div>"+
-          "<div class='col-xs-10 col-sm-3'><p><a target='_blank' href=" + url + ">" + userData.name + "</a></p></div>" +
-          "<div class='col-xs-10 col-sm-7'><p class='hidden-xs'>" + /*innerHTML*/ "#" + "</p></div> </div>"
+          "<div class='col-sm-3'><img class='img-circle' width='150' height='150'" + "src='" + userData.logo +"'></div>"+
+          "<div class='col-sm-3'><p><a target='_blank' href=" + url + ">" + userData.name + "</a></p></div>" +
+           "<div class='col-sm-6'>" + /*innerHTML*/ "#" + "</div></div>"
         );
 
-        $(".status div").on('click',function () {
-            $(".status div").removeClass('element');
+
+        $(".userStatus div").on('click',function () {
+            $(".userStatus div").removeClass('element');
             $(this).addClass('element');
         });
 
-        $(".allUsers").click(function () {
+        $("#statusBar").click(function () {
             $(".streaming").show();
         })
 
         $(".onlineUsers").click(function () {
-            $(".streaming").show();
+            $(".streaming .row").show();
             $(".streaming .offlineUsers").hide();
         })
 
