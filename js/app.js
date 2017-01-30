@@ -33,7 +33,7 @@ $(document).ready(function() {
 
         console.log(user);
 
-        if(userStatus == "Offline") {
+        if(userStatus == "offline") {
           var url = "https://www.twitch.tv/" + userData.name; //url with the "channel.name" for existing channels
         }
         else {
@@ -42,7 +42,7 @@ $(document).ready(function() {
 
         $(".streaming").append(
           "<div class='row "+ userData.status + "' id='" + user +"'>"+
-          "<div class='col-xs-2 col-sm-2'><img class='img-custom' " + "src='" + userData.logo +"'></div>"+
+          "<div class='col-m-6'><img class='img-custom' " + "src='" + userData.logo +"'></div>"+
           "<div class='col-xs-10 col-sm-3'><p><a target='_blank' href=" + url + ">" + userData.name + "</a></p></div>" +
           "<div class='col-xs-10 col-sm-7'><p class='hidden-xs'>" + /*innerHTML*/ "#" + "</p></div> </div>"
         );
@@ -52,18 +52,18 @@ $(document).ready(function() {
             $(this).addClass('element');
         });
 
-        $("#all").click(function () {
-            $("#streaming .row").show();
+        $(".allUsers").click(function () {
+            $(".streaming").show();
         })
 
-        $("#onlineUsers").click(function () {
-            $("#streaming .row").show();
-            $("#streaming .offlineUsers, #streaming .disabled").hide();
+        $(".onlineUsers").click(function () {
+            $(".streaming").show();
+            $(".streaming .offlineUsers").hide();
         })
 
-        $("#offlineUsers").click(function () {
-            $("#streaming .row").show();
-            $("#streaming .onlineUsers").hide();
+        $(".offlineUsers").click(function () {
+            $(".streaming").show();
+            $(".streaming .onlineUsers").hide();
         })
 
         console.log("The Script has finished.");
