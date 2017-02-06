@@ -62,8 +62,9 @@ $(document).ready(function() {
   function loadHTML(user) {
 
     var userLogo;
-    var userStatus;
     var onlineStatus;
+    var streamImage = "";
+    var userValid = "";
 
     if (user.live == null) {
       onlineStatus = "Offline";
@@ -72,24 +73,30 @@ $(document).ready(function() {
     }
 
     if (user.data.status == 404) {
-      userLogo = "<div class='col-sm-4'><img class='img-circle' width='150' height='150'" + "src='http://placehold.it/150x150'></div>";
-      userStatus = "<div class='col-sm-4'>" + user.name + " does not exist or was banhammered!</div>"
+      userLogo = "<div class='col-lg-3'><img class='img-circle' width='240' height='240'" + "<span class='glyphicon glyphicon-remove-sign'></span></div>";
+      userValid = "<p>" + user.name + " does not exist or was banhammered!</p>"
     } else {
-      userLogo = "<div class='col-sm-4'><img class='img-circle' width='150' height='150'" + "src='" + user.data.logo + "'></div>";
-      userStatus = "<div class='col-sm-4'>" + user.name + " is currently " + "<a target='_blank' href=" + "https://www.twitch.tv/" + user.name + ">" + onlineStatus + "!</a>"
+      userLogo = "<div class='col-lg-3'><img class='img-circle' width='240' height='240'" + "src='" + user.data.logo + "'></div>";
 
       if (onlineStatus == "Online") {
-        userStatus += "<p>" + user.name + " is streaming " + user.live.game + "<p><img src='" + user.live.preview.medium + "' width='320' height='180'>";
-
-        console.log(user.live.preview.medium);
+        streamImage = "<img src='" + user.live.preview.medium + "' width='400' height='240'>";
+        userValid = "<p>" + user.name + " is streaming " + user.live.game + "<p>";
       }
-
-      userStatus += "</div>";
     }
 
+
     $(".streaming").append(
-      "<div class='row " + onlineStatus + "' id='" + user.name + "'>" + userLogo +
-      "<div class='col-sm-4'><p><a target='_blank' href=" + "https://www.twitch.tv/" + user.name + ">" + user.name + "</a></p></div>" + userStatus + "</div>"
+      "<hr class='featurette-divider'>" +
+      "<div class= 'row'>" + userLogo +
+        "<div class='col-lg-3'>" +
+          "<h2 class='featurette-heading'><a target='_blank' href='https://www.twitch.tv/" + user.name + "'>" + user.name + "</a><span class='text-muted'> is " + onlineStatus + "</span></h2>" + userValid +
+        "</div>" +
+            "<div class='row'>" +
+            "</div>" +
+        "<div class='col-lg-5'>" +
+          streamImage +
+        "</div>" +
+      "</div>"
     );
 
   };
