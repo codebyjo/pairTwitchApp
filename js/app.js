@@ -71,11 +71,19 @@ $(document).ready(function () {
     }
 
     if (user.data.status === 404) {
+<<<<<<< HEAD
       userLogo = "<div class='col-lg-3 col-md-4'><span style='font-size:240px;' class='glyphicon glyphicon-remove-sign'></span></div>";
       userValid = "<p>" + user.name + " does not exist or was banhammered!</p>";
       classStatus = "Offline";
     } else {
       userLogo = "<div class='col-lg-3 col-md-4'><img class='img-circle' width='240' height='240'" + "src='" + user.data.logo + "'></div>";
+=======
+      userLogo = "<div class='col-lg-3'><span style='font-size:240px;' class='glyphicon glyphicon-remove-sign'></span></div>";
+      userValid = "<p>" + user.name + " does not exist or was banhammered!</p>";
+      classStatus = "Offline";
+    } else {
+      userLogo = "<div class='col-lg-3'><img class='img-circle' width='240' height='240'" + "src='" + user.data.logo + "'></div>";
+>>>>>>> 6b2bd5ec99e9324b990b95ef98b4ca26cfd10ee3
       classStatus = "Offline";
 
       if (onlineStatus === "Online") {
